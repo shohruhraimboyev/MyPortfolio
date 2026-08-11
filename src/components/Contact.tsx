@@ -3,11 +3,20 @@ import type { ChangeEvent, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 import { FaLinkedinIn } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 import { useLanguage } from "../context/LanguageContext";
 import { PI } from "../data/PersonalInfo";
 
+const EMAILJS_SERVICE_ID = "service_jg3k4fb";
+const EMAILJS_TEMPLATE_ID = "template_chodr5d";
+const EMAILJS_PUBLIC_KEY = "U3eGhXoQwROcV1U22";
+
 export const Contact = () => {
   const { t, lang } = useLanguage();
+  const [isSending, setIsSending] = useState(false);
+  const [sendStatus, setSendStatus] = useState<"idle" | "success" | "error">(
+    "idle",
+  );
 
   const [formData, setFormData] = useState({
     name: "",
@@ -25,31 +34,32 @@ export const Contact = () => {
     }));
   };
 
-  const handleContactSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleContactSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSending(true);
+    setSendStatus("idle");
 
-    const mailtoLink = `mailto:${PI.email}?subject=${encodeURIComponent(
-      formData.subject,
-    )}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`,
-    )}`;
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        EMAILJS_PUBLIC_KEY,
+      );
 
-    window.location.href = mailtoLink;
-
-    alert(
-      lang === "uz"
-        ? "Xabar yuborish uchun email ilovangiz ochilmoqda..."
-        : lang === "ru"
-          ? "Открывается почтовое приложение..."
-          : "Opening your email client...",
-    );
-
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+      setSendStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      setSendStatus("error");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -73,18 +83,18 @@ export const Contact = () => {
           </p>
 
           <div className="space-y-4">
-            {/* EMAIL */}
             <a
               href={`mailto:${PI.email}`}
-              className="flex items-center gap-4 text-slate-700 dark:text-blue-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="flex min-w-0 items-center gap-4 text-slate-700 dark:text-blue-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-blue-950 flex items-center justify-center">
+              <div className="w-10 h-10 shrink-0 rounded-full bg-slate-100 dark:bg-blue-950 flex items-center justify-center">
                 <Mail className="w-5 h-5 text-blue-600 dark:text-blue-400" />
               </div>
-              <span className="font-medium text-lg">{PI.email}</span>
+              <span className="min-w-0 break-all text-sm leading-5 font-medium sm:text-lg sm:leading-normal">
+                {PI.email}
+              </span>
             </a>
 
-            {/* LINKEDIN */}
             <a
               href={PI.linkedin}
               target="_blank"
@@ -102,7 +112,6 @@ export const Contact = () => {
         {/* RIGHT SIDE FORM */}
         <form onSubmit={handleContactSubmit} className="flex flex-col gap-5">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {/* NAME */}
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium text-slate-700 dark:text-blue-300 ml-1">
                 {t.contact.name}
@@ -117,7 +126,6 @@ export const Contact = () => {
               />
             </div>
 
-            {/* EMAIL INPUT */}
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium text-slate-700 dark:text-blue-300 ml-1">
                 {t.contact.email}
@@ -133,7 +141,6 @@ export const Contact = () => {
             </div>
           </div>
 
-          {/* SUBJECT */}
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium text-slate-700 dark:text-blue-300 ml-1">
               {t.contact.subj}
@@ -148,7 +155,6 @@ export const Contact = () => {
             />
           </div>
 
-          {/* MESSAGE */}
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium text-slate-700 dark:text-blue-300 ml-1">
               {t.contact.msg}
@@ -163,12 +169,37 @@ export const Contact = () => {
             />
           </div>
 
-          {/* BUTTON */}
+          {sendStatus === "success" && (
+            <p className="text-green-600 dark:text-green-400 text-sm">
+              {lang === "uz"
+                ? "Xabaringiz muvaffaqiyatli yuborildi!"
+                : lang === "ru"
+                  ? "Ваше сообщение успешно отправлено!"
+                  : "Your message was sent successfully!"}
+            </p>
+          )}
+          {sendStatus === "error" && (
+            <p className="text-red-600 dark:text-red-400 text-sm">
+              {lang === "uz"
+                ? "Xatolik yuz berdi, qaytadan urinib ko'ring."
+                : lang === "ru"
+                  ? "Произошла ошибка, попробуйте снова."
+                  : "Something went wrong, please try again."}
+            </p>
+          )}
+
           <button
             type="submit"
-            className="mt-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all shadow-lg shadow-blue-500/25 w-full sm:w-auto"
+            disabled={isSending}
+            className="mt-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium rounded-xl transition-all shadow-lg shadow-blue-500/25 w-full sm:w-auto"
           >
-            {t.contact.send}
+            {isSending
+              ? lang === "uz"
+                ? "Yuborilmoqda..."
+                : lang === "ru"
+                  ? "Отправка..."
+                  : "Sending..."
+              : t.contact.send}
           </button>
         </form>
       </div>
