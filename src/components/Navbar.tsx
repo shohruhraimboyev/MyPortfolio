@@ -62,7 +62,7 @@ export const Navbar = () => {
           <div className="flex items-center gap-3 pl-6 border-l border-slate-200 dark:border-blue-900/30 ml-2">
             {/* LANGUAGE */}
             <div className="flex bg-slate-100 dark:bg-blue-950 p-1 rounded-lg border border-slate-200 dark:border-blue-900/50">
-              {(["en", "uz", "ru"] as const).map((l) => (
+              {(["en", "uz", "ru", "jp"] as const).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
@@ -130,7 +130,7 @@ export const Navbar = () => {
               {/* MOBILE ACTIONS */}
               <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-200 dark:border-blue-900/30">
                 <div className="flex gap-2">
-                  {(["en", "uz", "ru"] as const).map((l) => (
+                  {(["en", "uz", "ru", "jp"] as const).map((l) => (
                     <button
                       key={l}
                       onClick={() => setLang(l)}

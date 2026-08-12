@@ -1,6 +1,4 @@
-﻿import { useEffect } from "react";
-
-import { ThemeProvider } from "./context/ThemeContext";
+﻿import { ThemeProvider } from "./context/ThemeContext";
 import { LanguageProvider } from "./context/LanguageContext";
 
 import { Navbar } from "./components/Navbar";
@@ -13,16 +11,7 @@ import { About } from "./components/About";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
-import { useTheme } from "./context/ThemeContext";
-
 function AppContent() {
-  const { theme } = useTheme();
-
-  useEffect(() => {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-  }, [theme]);
-
   return (
     <>
       {/* Ambient background */}

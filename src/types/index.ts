@@ -1,4 +1,4 @@
-export type Language = "en" | "uz" | "ru";
+export type Language = "en" | "uz" | "ru" | "jp";
 export type Theme = "dark" | "light";
 
 export interface SkillCategory {

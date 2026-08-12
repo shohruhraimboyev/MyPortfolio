@@ -1,6 +1,6 @@
-import type { TranslationData } from "../types";
+import type { Language, TranslationData } from "../types";
 
-export const translations: Record<"en" | "uz" | "ru", TranslationData> = {
+export const translations: Record<Language, TranslationData> = {
   en: {
     nav: {
       about: "About",
@@ -223,7 +223,7 @@ export const translations: Record<"en" | "uz" | "ru", TranslationData> = {
           tags: ["Next.js", "TypeScript", "TanStack Query", "API", "shadcn/ui"],
           githubLink:
             "https://github.com/shohruhraimboyev/CRM-admin-panel-exam",
-            liveLink: "https://crm-exam-shohruh.vercel.app",
+          liveLink: "https://crm-exam-shohruh.vercel.app",
         },
       ],
     },
@@ -357,7 +357,7 @@ export const translations: Record<"en" | "uz" | "ru", TranslationData> = {
           tags: ["Next.js", "TypeScript", "TanStack Query", "API", "shadcn/ui"],
           githubLink:
             "https://github.com/shohruhraimboyev/CRM-admin-panel-exam",
-            liveLink: "https://crm-exam-shohruh.vercel.app",
+          liveLink: "https://crm-exam-shohruh.vercel.app",
         },
       ],
     },
@@ -401,5 +401,138 @@ export const translations: Record<"en" | "uz" | "ru", TranslationData> = {
       send: "Отправить",
     },
     footer: "Сделано с React и Tailwind",
+  },
+  jp: {
+    nav: {
+      about: "自己紹介",
+      skills: "スキル",
+      projects: "プロジェクト",
+      experience: "経歴",
+      contact: "お問い合わせ",
+    },
+    hero: {
+      greeting: "はじめまして。",
+      heading1: "フロントエンド",
+      heading2: "エンジニア",
+      desc: "React、Next.js、TypeScriptを用いて、モダンでレスポンシブかつ拡張性の高いWebサイトの構築に取り組んでいます。Najot Ta'limの卒業生で、現在はBrSE（ブリッジシステムエンジニア）分野に関心を持ち、その分野での成長を目指しています。",
+      viewWork: "プロジェクトを見る",
+    },
+    about: {
+      title: "自己紹介",
+      desc: "モダンでユーザーフレンドリー、かつレスポンシブなWebサイトの構築を専門とするフロントエンドエンジニアです。プログラミングへの単純な興味から始まり、今では私の本業となりました。常に分かりやすく機能的なインターフェースの構築を心がけています。",
+      story: {
+        title: "これまでの歩み",
+        desc: "プログラミングへの興味は、インターネットやビデオゲームへの好奇心から始まりました。次第にその興味がフロントエンド開発へとつながりました。Najot Ta'limでフロントエンドの集中コースを修了し、現在も実践的なプロジェクトに取り組み続けています。",
+      },
+      philosophy: {
+        title: "私の取り組み方",
+        desc: "読みやすくクリーンなコードを書くこと、そしてUI/UXの細部にこだわることを大切にしています。物事を整理しながら進めるのが好きで、バグの発見・修正を避けることはありません。プロジェクトの要件に応じて、個人作業にもチームでの作業にも素早く適応します。",
+      },
+      beyond: {
+        title: "コーディング以外の時間",
+        desc: "将来の主な目標は、優れたフロントエンドエンジニアとして成長し、大規模なプロジェクトに携わり、国際的なIT環境で経験を積むことです。プライベートでは、アニメ鑑賞やビデオゲーム、散歩を楽しんでいます。",
+      },
+    },
+    stats: { years: "経験年数", shipped: "プロジェクト数" },
+    services: {
+      title: "できること",
+      items: [
+        {
+          title: "フロントエンド開発",
+          desc: "React、Next.js、TypeScriptを用いた、柔軟でユーザーフレンドリーなWebサイトの構築。",
+        },
+        {
+          title: "状態管理",
+          desc: "Redux ToolkitおよびTanStack Queryを用いたWebサイトのデータ・状態管理。",
+        },
+        {
+          title: "API連携",
+          desc: "REST APIとの連携、およびFetch APIとTanStack Queryを用いた効率的なデータ処理。",
+        },
+        {
+          title: "UI実装",
+          desc: "Figmaデザインを、正確でモダンなユーザーインターフェースへと落とし込む作業。",
+        },
+      ],
+    },
+    tech: {
+      title: "スキルと技術",
+      desc: "堅牢で拡張性が高く、効率的なアプリケーションを構築するために、信頼性の高いフロントエンド技術を活用しています。",
+    },
+    technologies: [],
+    projects: {
+      title: "主なプロジェクト",
+      viewAll: "すべてのプロジェクトを見る",
+      items: [
+        {
+          title: "GreenShop",
+          image: "/images/projects/greenshop.png",
+          description:
+            "React、Vite、TypeScript、Tailwind CSSを用いて構築したフロントエンドのECサイト課題プロジェクト。クリーンでレスポンシブなショップデザインが特徴です。",
+          tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+          githubLink: "https://github.com/shohruhraimboyev/GreenShop-EXAM",
+          liveLink: "https://green-shop-shohruh-exam.vercel.app",
+        },
+        {
+          title: "To-Do App",
+          image: "/images/projects/todo.png",
+          description:
+            "Next.jsとTypeScriptで構築したタスク管理アプリ。API通信により、ユーザーは日々のタスクを追加・完了・削除できます。",
+          tags: ["Next.js", "TypeScript", "Tailwind CSS", "API"],
+          githubLink: "https://github.com/shohruhraimboyev/next-todo-app",
+          liveLink: "https://next-todo-app-flame-ten.vercel.app",
+        },
+        {
+          title: "CRM Admin Panel",
+          image: "/images/projects/crm.png",
+          description:
+            "Next.js、TypeScript、TanStack Query、shadcn/uiを用いて構築した、顧客・注文・内部データを管理するための管理者ダッシュボード。注意：現在バックエンドが所有者により完全に停止されているため、UIは正常に動作していません。コード自体をご確認いただけますと幸いです。",
+          tags: ["Next.js", "TypeScript", "TanStack Query", "API", "shadcn/ui"],
+          githubLink:
+            "https://github.com/shohruhraimboyev/CRM-admin-panel-exam",
+          liveLink: "https://crm-exam-shohruh.vercel.app",
+        },
+      ],
+    },
+    exp: {
+      prof: "実務経験",
+      edu: "学歴",
+      items: [
+        {
+          role: "フロントエンドエンジニア",
+          company: "実践プロジェクト",
+          duration: "現在",
+          description:
+            "商業プロジェクトでの正式な実務経験はまだありませんが、知識とスキルを継続的に向上させるため、常に実践的なプロジェクトに取り組んでいます。",
+        },
+      ],
+      education: [
+        {
+          degree: "フロントエンド開発コース（8ヶ月）",
+          school: "Najot Ta'lim",
+          duration: "2025年7月4日 - 2026年2月27日",
+          description:
+            "8ヶ月間のフロントエンド開発コースを修了し、専門資格を取得しました。",
+        },
+      ],
+      languages: {
+        title: "言語",
+        items: [
+          { name: "ウズベク語", level: "母語" },
+          { name: "ロシア語", level: "初級" },
+          { name: "日本語", level: "A1（学習中）" },
+        ],
+      },
+    },
+    contact: {
+      title: "メッセージを送る",
+      desc: "プロジェクトのご相談やご協力のご希望がございましたら、以下のフォームよりお気軽にご連絡ください。",
+      name: "お名前",
+      email: "メールアドレス",
+      subj: "件名",
+      msg: "メッセージ",
+      send: "送信",
+    },
+    footer: "React と Tailwind で制作",
   },
 };
