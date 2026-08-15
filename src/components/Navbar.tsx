@@ -159,5 +159,3 @@ export const Navbar = () => {
     </nav>
   );
 };
-// ina shu yazgan narsalarim React, TypeScript, Tailwind CSS, va Framer Motion bilan yozilgan. Navbar komponenti foydalanuvchi interfeysida navigatsiya panelini yaratadi. U responsiv bo'lib, mobil va desktop versiyalarini qo'llab-quvvatlaydi. Foydalanuvchi tilni o'zgartirishi va mavzuni (yorug' yoki qorong'i) almashtirishi mumkin.
-// hulas shundi React. TypeScript, Tailwind css va kutubhonala ishlatilgan hali kutubhona otmgaansan shunga tuhsunmasang garak silara indi orgatadi inabi kodla tailwind css niki. shu yuqarda gorsatgan narsam hozir oytqan narsamda yozilgan bu portfolio pastda ajralib durgan narsa terminal deyiladi bunam indi otasila terminal sanga kop vazifanai bajarishda yordmsa baradi hozir termibnalda yozgan narsalarim sanda ishlamidi garakli narsalani ornatishing garajk boladi shu hozir gorsatgan narsam responsive deyiladi bu telefon planshet kopyutera saytni moslash deyiladi yani telefonda ochaqingda telefona mos durgan bolsa shu narsa responsive deyiladi til ozgartiradon anrsalani orgatadi hali kop narsa organasan inabi asa terminalda yoziladi github bn ishlash dagai
